@@ -1,0 +1,6 @@
+BasedOnStyle: Webkit
+ColumnLimit: 200
+AllowShortFunctionsOnASingleLine: false
+Standard: Cpp11
+ReflowComments: false
+FixNamespaceComments: true

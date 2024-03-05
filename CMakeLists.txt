@@ -7,13 +7,14 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 if(MSVC)
   add_definitions(-DUNICODE -D_UNICODE -D_CRT_SECURE_NO_WARNINGS)
 endif()
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # QT
 message("CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 find_package(Qt5 COMPONENTS Core)
+
+set(QCLASSIC_BUILD_SHARED_LIBS ON)
 
 if(MSVC)
   # Force to always compile with W4
@@ -29,10 +30,19 @@ endif()
 
 add_subdirectory(external)
 
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+if(QCLASSIC_BUILD_SHARED_LIBS)
+  add_library(${PROJECT_NAME} SHARED QClassicFrDrvNg qclassic_interface.h
+                                     qclassic_interface.cpp)
+else()
+  add_library(${PROJECT_NAME} STATIC QClassicFrDrvNg qclassic_interface.h
+                                     qclassic_interface.cpp)
+endif()
 
-add_library(${PROJECT_NAME} SHARED QClassicFrDrvNg qclassic_interface.h
-                                   qclassic_interface.cpp)
+get_target_property(target_type ${PROJECT_NAME} TYPE)
+if(target_type STREQUAL SHARED_LIBRARY)
+  target_compile_definitions(${PROJECT_NAME} PRIVATE QCLASSIC_FR_DRV_NG_DLL)
+  set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+endif()
 
 if(EXISTS ../classic_fr_drv_ng/classic_interface.h)
   target_include_directories(${PROJECT_NAME} PRIVATE ../classic_fr_drv_ng)

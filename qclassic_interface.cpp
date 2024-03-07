@@ -7242,7 +7242,12 @@ void QClassicFrDrvNg::onClassicPropertyChanged(const std::string& name)
 {
     auto propId = metaObject()->indexOfProperty(name.c_str());
     auto prop = metaObject()->property(propId);
-    auto propTypeName = prop.typeName();
+    const char* propTypeName;
+    if (prop.isEnumType()) {
+        propTypeName = prop.enumerator().enumName();
+    } else {
+        propTypeName = prop.typeName();
+    }
     auto value = property(name.c_str());
     auto ret = QMetaObject::invokeMethod(this, (name + "Changed").data(), Qt::DirectConnection, QGenericArgument(propTypeName, static_cast<const void*>(&value)));
     if (ret) {

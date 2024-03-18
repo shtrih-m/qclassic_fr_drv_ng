@@ -7243,9 +7243,14 @@ void QClassicFrDrvNg::onClassicPropertyChanged(const std::string& name)
     auto propId = metaObject()->indexOfProperty(name.c_str());
     auto prop = metaObject()->property(propId);
     const char* propTypeName;
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
     if (prop.isEnumType()) {
         propTypeName = prop.enumerator().enumName();
-    } else {
+    } else
+#endif
+
+    {
         propTypeName = prop.typeName();
     }
     auto value = property(name.c_str());

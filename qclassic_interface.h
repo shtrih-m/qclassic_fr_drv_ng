@@ -793,6 +793,12 @@ class QCLASSIC_FR_DRV_NG_API QClassicFrDrvNg : public QObject {
     Q_PROPERTY(int FirstDocumentNumber READ Get_FirstDocumentNumber WRITE Set_FirstDocumentNumber NOTIFY FirstDocumentNumberChanged)
     Q_PROPERTY(int FNArchiveType READ Get_FNArchiveType WRITE Set_FNArchiveType NOTIFY FNArchiveTypeChanged)
     Q_PROPERTY(bool MarkingOnly READ Get_MarkingOnly WRITE Set_MarkingOnly NOTIFY MarkingOnlyChanged)
+    Q_PROPERTY(QString CrptExchangeCaCertPath READ Get_CrptExchangeCaCertPath WRITE Set_CrptExchangeCaCertPath NOTIFY CrptExchangeCaCertPathChanged)
+    Q_PROPERTY(QString CrptCdnListUrl READ Get_CrptCdnListUrl WRITE Set_CrptCdnListUrl NOTIFY CrptCdnListUrlChanged)
+    Q_PROPERTY(QString CrptToken READ Get_CrptToken WRITE Set_CrptToken NOTIFY CrptTokenChanged)
+    Q_PROPERTY(QString OutputStrJson READ Get_OutputStrJson WRITE Set_OutputStrJson NOTIFY OutputStrJsonChanged)
+    Q_PROPERTY(QString InputStrJson READ Get_InputStrJson WRITE Set_InputStrJson NOTIFY InputStrJsonChanged)
+    Q_PROPERTY(bool CrptCheck READ Get_CrptCheck WRITE Set_CrptCheck NOTIFY CrptCheckChanged)
     Q_PROPERTY(int FNOSUSupportStatus READ Get_FNOSUSupportStatus WRITE Set_FNOSUSupportStatus NOTIFY FNOSUSupportStatusChanged)
     Q_PROPERTY(QString FNImplementation READ Get_FNImplementation WRITE Set_FNImplementation NOTIFY FNImplementationChanged)
     Q_PROPERTY(int DocumentSize READ Get_DocumentSize WRITE Set_DocumentSize NOTIFY DocumentSizeChanged)
@@ -1476,6 +1482,7 @@ public slots:
     int FNGetDocumentSize();
     int FNReadFiscalBarcode();
     int PrintStringWithWrap();
+    int FNCheckItemBarcodeCrpt();
     //getters setters
     bool Get_HasCashControlLicense() const;
     int Get_SwapBytesMode() const;
@@ -2806,8 +2813,26 @@ public slots:
     void Set_FNImplementation(QString value);
     int Get_FNOSUSupportStatus() const;
     void Set_FNOSUSupportStatus(int value);
+    bool Get_CrptCheck() const;
+    void Set_CrptCheck(bool value);
+    QString Get_InputStrJson() const;
+    void Set_InputStrJson(QString value);
+    QString Get_OutputStrJson() const;
+    void Set_OutputStrJson(QString value);
+    QString Get_CrptToken() const;
+    void Set_CrptToken(QString value);
+    QString Get_CrptCdnListUrl() const;
+    void Set_CrptCdnListUrl(QString value);
+    QString Get_CrptExchangeCaCertPath() const;
+    void Set_CrptExchangeCaCertPath(QString value);
 
 signals:
+    void CrptExchangeCaCertPathChanged(QString CrptExchangeCaCertPath);
+    void CrptCdnListUrlChanged(QString CrptCdnListUrl);
+    void CrptTokenChanged(QString CrptToken);
+    void OutputStrJsonChanged(QString OutputStrJson);
+    void InputStrJsonChanged(QString InputStrJson);
+    void CrptCheckChanged(bool CrptCheck);
     void FNOSUSupportStatusChanged(int FNOSUSupportStatus);
     void FNImplementationChanged(QString FNImplementation);
     void DocumentSizeChanged(int DocumentSize);

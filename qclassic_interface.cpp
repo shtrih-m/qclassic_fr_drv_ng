@@ -7455,3 +7455,72 @@ int QClassicFrDrvNg::PrintStringWithWrap()
 {
     return m_pimpl->PrintStringWithWrap();
 }
+
+void QClassicFrDrvNg::Set_CrptCheck(bool value)
+{
+    m_pimpl->Set_CrptCheck(value);
+}
+bool QClassicFrDrvNg::Get_CrptCheck() const
+{
+    return m_pimpl->Get_CrptCheck();
+
+}
+int QClassicFrDrvNg::FNCheckItemBarcodeCrpt()
+{
+    return m_pimpl->FNCheckItemBarcodeCrpt();
+}
+
+void QClassicFrDrvNg::Set_InputStrJson(QString value)
+{
+    m_pimpl->Set_InputStrJson(value.toStdString());
+}
+QString QClassicFrDrvNg::Get_InputStrJson() const
+{
+    auto value = m_pimpl->Get_InputStrJson();
+    return QString::fromStdString(value);
+
+}
+
+void QClassicFrDrvNg::Set_OutputStrJson(QString value)
+{
+    m_pimpl->Set_OutputStrJson(value.toStdString());
+}
+QString QClassicFrDrvNg::Get_OutputStrJson() const
+{
+    auto value = m_pimpl->Get_OutputStrJson();
+    return QString::fromStdString(value);
+
+}
+
+void QClassicFrDrvNg::Set_CrptToken(QString value)
+{
+    m_pimpl->Set_CrptToken(value.toStdString());
+}
+QString QClassicFrDrvNg::Get_CrptToken() const
+{
+    auto value = m_pimpl->Get_CrptToken();
+    return QString::fromStdString(value);
+
+}
+
+void QClassicFrDrvNg::Set_CrptCdnListUrl(QString value)
+{
+    m_pimpl->Set_CrptCdnListUrl(value.toStdString());
+}
+QString QClassicFrDrvNg::Get_CrptCdnListUrl() const
+{
+    auto value = m_pimpl->Get_CrptCdnListUrl();
+    return QString::fromStdString(value);
+
+}
+
+void QClassicFrDrvNg::Set_CrptExchangeCaCertPath(QString value)
+{
+    m_pimpl->Set_CrptExchangeCaCertPath(value.toStdString());
+}
+QString QClassicFrDrvNg::Get_CrptExchangeCaCertPath() const
+{
+    auto value = m_pimpl->Get_CrptExchangeCaCertPath();
+    return QString::fromStdString(value);
+
+}

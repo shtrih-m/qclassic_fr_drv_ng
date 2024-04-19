@@ -793,6 +793,8 @@ class QCLASSIC_FR_DRV_NG_API QClassicFrDrvNg : public QObject {
     Q_PROPERTY(int FirstDocumentNumber READ Get_FirstDocumentNumber WRITE Set_FirstDocumentNumber NOTIFY FirstDocumentNumberChanged)
     Q_PROPERTY(int FNArchiveType READ Get_FNArchiveType WRITE Set_FNArchiveType NOTIFY FNArchiveTypeChanged)
     Q_PROPERTY(bool MarkingOnly READ Get_MarkingOnly WRITE Set_MarkingOnly NOTIFY MarkingOnlyChanged)
+    Q_PROPERTY(quint32 FN30DayResource READ Get_FN30DayResource WRITE Set_FN30DayResource NOTIFY FN30DayResourceChanged)
+    Q_PROPERTY(quint32 FN5YearResource READ Get_FN5YearResource WRITE Set_FN5YearResource NOTIFY FN5YearResourceChanged)
     Q_PROPERTY(QString CrptExchangeCaCertPath READ Get_CrptExchangeCaCertPath WRITE Set_CrptExchangeCaCertPath NOTIFY CrptExchangeCaCertPathChanged)
     Q_PROPERTY(QString CrptCdnListUrl READ Get_CrptCdnListUrl WRITE Set_CrptCdnListUrl NOTIFY CrptCdnListUrlChanged)
     Q_PROPERTY(QString CrptToken READ Get_CrptToken WRITE Set_CrptToken NOTIFY CrptTokenChanged)
@@ -2825,8 +2827,14 @@ public slots:
     void Set_CrptCdnListUrl(QString value);
     QString Get_CrptExchangeCaCertPath() const;
     void Set_CrptExchangeCaCertPath(QString value);
+    quint32 Get_FN5YearResource() const;
+    void Set_FN5YearResource(quint32 value);
+    quint32 Get_FN30DayResource() const;
+    void Set_FN30DayResource(quint32 value);
 
 signals:
+    void FN30DayResourceChanged(quint32 FN30DayResource);
+    void FN5YearResourceChanged(quint32 FN5YearResource);
     void CrptExchangeCaCertPathChanged(QString CrptExchangeCaCertPath);
     void CrptCdnListUrlChanged(QString CrptCdnListUrl);
     void CrptTokenChanged(QString CrptToken);

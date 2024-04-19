@@ -7524,3 +7524,23 @@ QString QClassicFrDrvNg::Get_CrptExchangeCaCertPath() const
     return QString::fromStdString(value);
 
 }
+
+void QClassicFrDrvNg::Set_FN5YearResource(quint32 value)
+{
+    m_pimpl->Set_FN5YearResource(value);
+}
+quint32 QClassicFrDrvNg::Get_FN5YearResource() const
+{
+    return m_pimpl->Get_FN5YearResource();
+
+}
+
+void QClassicFrDrvNg::Set_FN30DayResource(quint32 value)
+{
+    m_pimpl->Set_FN30DayResource(value);
+}
+quint32 QClassicFrDrvNg::Get_FN30DayResource() const
+{
+    return m_pimpl->Get_FN30DayResource();
+
+}
